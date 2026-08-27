@@ -129,6 +129,7 @@ jobs:
           base-ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
           head-ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
           fail-on-severity: high
+          fail-on-unsupported-status: false
       - name: Dependency review unavailable
         if: steps.dependency-review-support.outputs.supported != 'true'
         run: echo "Skipping dependency review because this is a private repository without GitHub Code Security."
